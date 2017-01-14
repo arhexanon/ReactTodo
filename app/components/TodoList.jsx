@@ -1,7 +1,7 @@
 var React = require('react');
 var Todo = require('Todo');
 
-var Todolist = React.createClass({
+var TodoList = React.createClass({
 
     render: function () {
 
@@ -27,4 +27,4 @@ var Todolist = React.createClass({
     }
 });
 
-module.exports = Todolist;
+module.exports = TodoList;
