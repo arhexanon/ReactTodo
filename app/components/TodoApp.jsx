@@ -1,11 +1,14 @@
 var React = require('react');
 var TodoList = require('TodoList');
-var AddTodo = require('AddTodo')
+var AddTodo = require('AddTodo');
+var TodoSearch = require('TodoSearch');
 
 var TodoApp =  React.createClass({
 
     getInitialState: function () {
       return {
+          showCompleted: false,
+          searchText : "",
           todos: [
               {
                   id: 1,
@@ -41,6 +44,12 @@ var TodoApp =  React.createClass({
     handleAddTodo: function (text){
         alert("new todo " + text);
     },
+    handleSearchTodo: function (showcompleted, searchText){
+        this.setState({
+            showCompleted : showcompleted,
+            searchText : searchText.toLowerCase()
+        });
+    },
 
     render: function () {
         //  todos are in the state and passed through to todos component as props..
@@ -48,6 +57,7 @@ var TodoApp =  React.createClass({
 
         return(
             <div>
+                <TodoSearch onSearchTodo={this.handleSearchTodo}/>
                 <TodoList todos = {todos}/>
                 <AddTodo onAddTodo={this.handleAddTodo}/>
             </div>
