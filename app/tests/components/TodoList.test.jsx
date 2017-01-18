@@ -20,6 +20,7 @@ describe('TodoList', () => {
            text: 'bbb'
        }];
        var todoList = TestUtils.renderIntoDocument(<TodoList todos={todos}/>);
+       // How many todos are rendered in the list...
        var todosComponents = TestUtils.scryRenderedComponentsWithType(todoList, Todo);
        expect(todosComponents.length).toBe(todos.length);
     });
