@@ -41,9 +41,12 @@ var TodoApp =  React.createClass({
           ]
       };
     },
+    //passed to component AddTodo
     handleAddTodo: function (text){
         alert("new todo " + text);
     },
+
+    //passed to component TodoSearch..
     handleSearchTodo: function (showcompleted, searchText){
         this.setState({
             showCompleted : showcompleted,
