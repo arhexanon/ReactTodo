@@ -5,6 +5,7 @@ var uuid = require("node-uuid");
 var TodoList = require('TodoList');
 var AddTodo = require('AddTodo');
 var TodoSearch = require('TodoSearch');
+var TodoAPI = require('TodoAPI')
 
 var TodoApp =  React.createClass({
 
@@ -12,9 +13,14 @@ var TodoApp =  React.createClass({
       return {
           showCompleted: false,
           searchText : "",
-          todos: []
+          todos: TodoAPI.getTodos()
       };
     },
+
+    componentDidUpdate: function () {
+        TodoAPI.setTodos(this.state.todos);
+    },
+
     //passed to component AddTodo
     handleAddTodo: function (text) {
         //add todo to array using spread operator ...
