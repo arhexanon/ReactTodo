@@ -26,7 +26,6 @@ describe('TodoSearch', () => {
             TestUtils.Simulate.change(todoSearch.refs.searchText);
 
             expect(spy).toHaveBeenCalledWith(false, "Check mail");
-            expect(spy).toHaveBeen
         });
         it('should call onTodoSearch if checkbox is set', () => {
             var spy =  expect.createSpy();
