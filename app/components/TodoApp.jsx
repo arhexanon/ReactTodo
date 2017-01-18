@@ -19,8 +19,25 @@ var TodoApp =  React.createClass({
     handleAddTodo: function (text) {
         //add todo to array using spread operator ...
         this.setState({
-            todos : [...this.state.todos, {id:  uuid(), text: text}]
+            todos : [
+                ...this.state.todos,
+                {
+                    id:  uuid(),
+                    text: text,
+                    completed: false
+                }
+            ]
         });
+    },
+    handleToggle: function (id) {
+        var updatedTodos = this.state.todos.map((todo) => {
+                if( todo.id === id) {
+                    todo.completed = !todo.completed;
+                }
+                return todo
+            }
+        );
+        this.setState({todos: updatedTodos});
     },
 
     //passed to component TodoSearch..
@@ -38,7 +55,7 @@ var TodoApp =  React.createClass({
         return(
             <div>
                 <TodoSearch onSearchTodo={this.handleSearchTodo}/>
-                <TodoList todos = {todos}/>
+                <TodoList todos={todos} onToggle={this.handleToggle}/>
                 <AddTodo onAddTodo={this.handleAddTodo}/>
             </div>
         )
