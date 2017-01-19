@@ -29,10 +29,13 @@ module.exports = {
 
         filteredTodos.sort((a, b) => {
             if (!a.completed && b.completed) {
+                \\  a before b...
                 return -1;
             } else if (a.completed && !b.completed) {
+                \\ a after b...
                 return 1;
             } else {
+                \\ do not alter sort for a and b...
                 return 0;
             }
         });
