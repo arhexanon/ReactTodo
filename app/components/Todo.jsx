@@ -1,26 +1,33 @@
-var React =  require('react');
+var React = require('react');
 var moment = require('moment');
 
 var Todo = React.createClass({
     render: function () {
-
-        // Received props from  Todolist...
-        // Using ES6 destructering...
         var {id, text, completed, createdAt, completedAt} = this.props;
+        var todoClassName = completed ? 'todo todo-completed' : 'todo';
+        var renderDate = () => {
+            var message = 'Created ';
+            var timestamp = createdAt;
 
-        var messageCompleted = "";
-        if (completed){
-            var messageCompleted = ", completed at: " + moment.unix(completedAt).format('MMMM Do, YYYY @ h:mm A');
-        }
+            if (completed) {
+                message = 'Completed ';
+                timestamp = completedAt;
+            }
 
+            return message + moment.unix(timestamp).format('MMM Do YYYY @ h:mm a');
+        };
 
-        // react expression syntax uses {}...
         return (
-            <div onClick={() =>{
+            <div className={todoClassName} onClick={() => {
                 this.props.onToggle(id);
             }}>
-                <input type="checkbox" checked={completed}/>
-                {text},  {id}, created at: {moment.unix(createdAt).format('MMMM Do, YYYY @ h:mm A')} {messageCompleted}
+                <div>
+                    <input type="checkbox" checked={completed}/>
+                </div>
+                <div>
+                    <p>{text}</p>
+                    <p className="todo__subtext">{renderDate()}</p>
+                </div>
             </div>
         )
     }
