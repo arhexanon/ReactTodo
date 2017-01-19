@@ -6,7 +6,7 @@ var TodoSearch = React.createClass({
         var showCompleted = this.refs.showCompleted.checked;
 
         // parent function callback back , as property..
-        this.props.onSearchTodo(showCompleted, searchText);
+        this.props.onSearch(showCompleted, searchText);
     },
     render: function () {
         return (
