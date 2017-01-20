@@ -2,6 +2,7 @@ var expect  = require('expect');
 var actions = require('actions');
 
 
+
 describe('Actions', () => {
     it('should generate search text action', () => {
         var action = {
