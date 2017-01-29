@@ -1,12 +1,17 @@
 var React = require('react');
-var Todo = require('Todo');
+import Todo from 'Todo';
 
-var TodoList = React.createClass({
+var TodoAPI = require('TodoAPI');
+
+// acces to the dispatch method and state properties...
+var {connect} = require('react-redux');
+
+export var TodoList = React.createClass({
 
     render: function () {
 
         // Received props from  TodoApp...
-        var {todos} = this.props;
+        var {todos, showCompleted, searchText} = this.props;
 
         // Array map function replaces values in the array.
         // So, in this case each array element object is replaced in <Todo/>.
@@ -17,9 +22,9 @@ var TodoList = React.createClass({
                     <p className="container__message">Nothing To Do</p>
                 );
             }
-            return todos.map((todo) => {
+            return TodoAPI.filterTodos(todos,showCompleted,searchText).map((todo) => {
                     return (
-                        <Todo key={todo.id} {...todo} onToggle={this.props.onToggle}/>
+                        <Todo key={todo.id} {...todo}/>
                     );
             });
         };
@@ -32,4 +37,9 @@ var TodoList = React.createClass({
     }
 });
 
-module.exports = TodoList;
+export default  connect(
+    (state) => {
+        return  state;
+
+    }
+)(TodoList);

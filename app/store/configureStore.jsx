@@ -6,7 +6,7 @@ var {
     todosReducer
 } = require('reducers');
 
-export var configure = () => {
+export var configure = (initialState={}) => {
 
     var reducer = redux.combineReducers(
         {
@@ -15,7 +15,8 @@ export var configure = () => {
             todos: todosReducer
         }
     );
-    var store = redux.createStore(reducer, redux.compose(
+    // Hier indien nodig thunk / middleware laden...
+    var store = redux.createStore(reducer, initialState, redux.compose(
         window.devToolsExtension ? window.devToolsExtension() : f => f
     ));
     return store
