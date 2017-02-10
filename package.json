@@ -6,9 +6,7 @@
   "scripts": {
     "test": "karma start",
     "start": "node server.js",
-    "clean": "rm -rf node_modules",
-    "install": "npm install",
-    "build": "webpack --watch  --progress --colors "
+       "install": "npm install"
   },
   "author": "Andrew Mead",
   "license": "MIT",
