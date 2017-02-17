@@ -1,3 +1,4 @@
+// @flow
 var React = require('react');
 var ReactDOM = require('react-dom');
 var {Provider} =  require('react-redux');
@@ -7,6 +8,8 @@ var TodoApp = require('TodoApp');
 var actions  = require('actions');
 
 var TodoAPI = require('TodoAPI');
+
+import './../playground/firebase/index';
 
 var store = require('configureStore').configure();
 store.subscribe( () =>{
